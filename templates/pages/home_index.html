@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block body %}
+
+<h1> Student List ....</h1>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">+add</a></li>
+      
+    </ol>
+</nav>
+
+<form action="." method="post">
+
+  <div>
+      {% crispy form %}
+
+      <div class="d-flex">
+          <button class="btn btn-info">
+              Save
+          </button>
+       
+
+      </div>
+
+
+      
+  </div>
+
+
+</form>
+<hr>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Roll No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+
+
+      {% for i in student %}
+      <tr>
+        <th scope="row">{{i.roll_no}}</th>
+        <td>{{i.name}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.address}}</td>
+        <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="/{{i.id}}" class="btn btn-primary">Edit</a>
+                {% comment %} <button type="button" class="btn btn-danger">Delete</button> {% endcomment %}
+                
+              </div>
+        </td>
+      </tr>
+
+      {% endfor %}
+
+      {% if not student %}
+      <tr>
+        <th scope="row">No Data Found!</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endif %}
+      
+     
+    </tbody>
+
+</table>
+
+
+{% endblock body %}

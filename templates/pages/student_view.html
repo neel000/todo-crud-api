@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block body %}
+<h1> Student Id {{id}}</h1>
+
+<form action="." method="post">
+
+    <div>
+        {% crispy form %}
+  
+        <div class="d-flex">
+            <button class="btn btn-info">
+                Save
+            </button>
+         
+  
+        </div>
+  
+  
+        
+    </div>
+  
+  
+  </form>
+{% endblock body %}
